@@ -16,9 +16,12 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 
 ## 3. Modelo de cobro (decidido)
 
-- Setup fee (pago inicial) + suscripción mensual recurrente.
+- Setup fee (pago inicial) + suscripción mensual recurrente para **Agentes** y **Web**.
+- **Sistemas a medida** queda fuera de la mensualidad única (ver sección 6.1, decisión 3): siempre proyecto (pago único) + retainer opcional, cotizado aparte.
 - Opción de incluir dominio cuando aplique.
-- Ventaja competitiva a explotar: **bundle de las 3 líneas bajo una sola suscripción** (el mercado está premiando esto frente a herramientas sueltas).
+- Ventaja competitiva a explotar: **bundle de Agente + Web bajo una sola suscripción**, con descuento en la cotización de Sistemas a medida como upsell de proyecto para clientes bundle (el mercado premia esto frente a herramientas sueltas).
+- Cualquier línea puede contratarse suelta a precio individual; el bundle es el incentivo de mejor precio, no la única puerta de entrada (ver sección 6.1, decisión 2).
+- Permanencia: sin permanencia en Agente y Web (cancela cuando quieras); permanencia mínima en el retainer de Sistemas a medida (ver sección 6.1, decisión 1 — duración exacta aún pendiente, sección 7).
 
 ## 4. Hallazgos de investigación de mercado (validados — no reabrir sin nueva evidencia)
 
@@ -54,7 +57,9 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 
 ### 5.4 Bundle
 
-- Suscripción única combinando las 3 líneas con descuento vs. contratarlas por separado.
+- Suscripción única de **Agente + Web** con mejor precio que contratar cada una suelta.
+- **Sistemas a medida no forma parte de la mensualidad del bundle** (decisión cerrada en 6.1): se cotiza como proyecto aparte, con descuento en esa cotización para clientes que ya tienen el bundle.
+- Cualquier línea (incluido Agente o Web solos) puede contratarse suelta a precio individual — el bundle no es obligatorio para acceder a la agencia, es el incentivo de mejor precio.
 - Debe ser la oferta "hero" del messaging (no una línea más).
 
 ## 6. Stress-test de posicionamiento (manual — sin plugin de marketing, ver nota abajo)
@@ -89,6 +94,14 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 ### Recomendación sobre el bundle como oferta "hero"
 Para que funcione como headline necesita, antes de nombrarlo así: (a) una puerta de entrada clara para el cliente que solo quiere 1-2 líneas, no las 3; y (b) resolver la tensión del punto 1 (mensualidad forzada vs. naturaleza de proyecto de "sistemas a medida").
 
+## 6.1 Decisiones cerradas tras el stress-test (2026-07-01)
+
+1. **Política de cancelación/permanencia**: sin permanencia en Agente y Web (cancela cuando quieras); permanencia mínima solo en el retainer de Sistemas a medida, para recuperar la inversión de desarrollo custom. (La duración exacta de esa permanencia mínima queda como número pendiente, sección 7.)
+2. **Puerta de entrada al bundle**: cualquier línea se puede contratar suelta a precio individual. El bundle no es la única forma de entrar, es el incentivo de mejor precio si el cliente toma Agente + Web juntos.
+3. **Tensión de Sistemas a medida**: queda fuera de la mensualidad única del bundle. Sigue siendo proyecto (pago único) + retainer opcional, cotizado aparte, con descuento en esa cotización para clientes que ya tienen el bundle Agente + Web. Esto **redefine el bundle**: ya no es "3 líneas bajo una suscripción" sino "Agente + Web bajo una suscripción, con beneficio de precio en Sistemas a medida como upsell de proyecto" (aplicado en secciones 3 y 5.4).
+4. **Mensaje "sin cobro por uso"**: se eleva de decisión de pricing a principio de messaging explícito. Debe aparecer en el primer contacto de venta, en la página de precios y en el contrato — no solo vivir en la letra chica.
+   - Tagline de trabajo: *"Un precio fijo cada mes. Sin sorpresas en tu factura, sin importar cuánto vendas."*
+
 ## 7. Pendiente (sin definir — no rellenar con supuestos)
 
 - Precio exacto de setup y mensual por línea/paquete, calibrado a Perú/LatAm (no a precios europeos).
@@ -96,13 +109,11 @@ Para que funcione como headline necesita, antes de nombrarlo así: (a) una puert
 - Alcance exacto de "agente que vende por ti": límites de conversaciones, canales, entrenamiento con catálogo del cliente.
 - Nombres comerciales de los paquetes (ej: Basic/Pro/Scale).
 - Política de dominio (revender con margen vs costo directo).
-- **Política de cancelación** (sube de prioridad tras el stress-test — es objeción de confianza, no solo letra chica).
-- Puerta de entrada al bundle: ¿se puede contratar 1-2 líneas sueltas o el bundle es la única forma de entrar?
-- Cómo se resuelve la tensión de "sistemas a medida" (proyecto + retainer opcional) dentro de un bundle que promete mensualidad única.
+- Duración exacta de la permanencia mínima en el retainer de Sistemas a medida (ej. 3 vs 6 meses).
+- Monto/porcentaje del descuento en la cotización de Sistemas a medida para clientes bundle.
 
 ## 8. Siguiente paso
 
-1. Resolver las 4 decisiones bloqueantes que salieron del stress-test (política de cancelación, puerta de entrada al bundle, tensión de sistemas a medida, y explicitar "sin cobro por uso" como mensaje central).
-2. Cerrar el alcance fino de cada paquete (números de topes/cantidades marcados como "sin definir" en la sección 5).
-3. Cerrar precios exactos por línea/paquete, calibrados a Perú/LatAm.
-4. Definir política de dominio.
+1. Cerrar el alcance fino de cada paquete (números de topes/cantidades marcados como "sin definir" en la sección 5).
+2. Cerrar precios exactos por línea/paquete, calibrados a Perú/LatAm.
+3. Definir política de dominio y los 2 números menores que quedaron abiertos en la sección 7 (permanencia mínima y descuento bundle→proyecto).
