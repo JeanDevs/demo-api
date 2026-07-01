@@ -1,7 +1,7 @@
 # Spec: Oferta Comercial — Agents Future AI
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-01
+> Última actualización: 2026-07-01 (alcance de paquetes cerrado)
 
 ## 1. Contexto
 
@@ -40,14 +40,16 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 | Canales | 1 (WhatsApp *o* web chat) | 2 (WhatsApp + web chat) | Multicanal (+ Instagram/Messenger) |
 | Función | Responde FAQs + deriva a humano | Responde + toma pedidos/agenda | Responde + vende + upsell + seguimiento post-venta |
 | Entrenamiento | Catálogo básico (texto/PDF del cliente) | Catálogo + integración a lista de productos (actualizable) | Catálogo dinámico (sync con inventario/CMS) |
-| Límite de conversaciones | Tope mensual (**número sin definir**) | Tope más alto o "uso razonable" (**sin definir**) | Sin tope duro, cláusula de uso justo |
+| Límite de conversaciones | 300/mes | 1,000/mes | Sin tope duro, cláusula de uso justo |
 | Handoff a humano | Manual | Con alertas | Con reglas de escalamiento |
 | Analytics | Básico (nº conversaciones) | Reporte mensual | Dashboard + insights de ventas |
 
+> El tope de conversaciones es una señal para subir de plan, no una factura extra: si un cliente Básico/Intermedio supera el tope, se le invita a upgrade — nunca se le cobra por conversación, para mantener intacto el mensaje "sin cobro por uso" (sección 6.1, decisión 4).
+
 ### 5.2 Web / Landing (WaaS)
 
-- **Landing simple**: 1 página, formulario de contacto, hosting + dominio opcional, X actualizaciones de contenido/mes incluidas (**número sin definir**).
-- **Tienda/sitio a medida**: multi-página, catálogo de productos, pasarela de pago, hosting, mantenimiento y actualizaciones incluidas (**cantidad sin definir**).
+- **Landing simple**: 1 página, formulario de contacto, hosting + dominio opcional, 2 actualizaciones de contenido menores/mes incluidas (texto/imágenes; cambios grandes de diseño se cotizan aparte).
+- **Tienda/sitio a medida**: multi-página, catálogo de productos, pasarela de pago, hosting, actualizaciones rutinarias ilimitadas (productos/precios) + 2 horas de soporte técnico/mes incluidas.
 
 ### 5.3 Sistemas a medida
 
@@ -96,7 +98,7 @@ Para que funcione como headline necesita, antes de nombrarlo así: (a) una puert
 
 ## 6.1 Decisiones cerradas tras el stress-test (2026-07-01)
 
-1. **Política de cancelación/permanencia**: sin permanencia en Agente y Web (cancela cuando quieras); permanencia mínima solo en el retainer de Sistemas a medida, para recuperar la inversión de desarrollo custom. (La duración exacta de esa permanencia mínima queda como número pendiente, sección 7.)
+1. **Política de cancelación/permanencia**: sin permanencia en Agente y Web (cancela cuando quieras); permanencia mínima de **3 meses** en el retainer de Sistemas a medida, para recuperar la inversión de desarrollo custom.
 2. **Puerta de entrada al bundle**: cualquier línea se puede contratar suelta a precio individual. El bundle no es la única forma de entrar, es el incentivo de mejor precio si el cliente toma Agente + Web juntos.
 3. **Tensión de Sistemas a medida**: queda fuera de la mensualidad única del bundle. Sigue siendo proyecto (pago único) + retainer opcional, cotizado aparte, con descuento en esa cotización para clientes que ya tienen el bundle Agente + Web. Esto **redefine el bundle**: ya no es "3 líneas bajo una suscripción" sino "Agente + Web bajo una suscripción, con beneficio de precio en Sistemas a medida como upsell de proyecto" (aplicado en secciones 3 y 5.4).
 4. **Mensaje "sin cobro por uso"**: se eleva de decisión de pricing a principio de messaging explícito. Debe aparecer en el primer contacto de venta, en la página de precios y en el contrato — no solo vivir en la letra chica.
@@ -105,15 +107,13 @@ Para que funcione como headline necesita, antes de nombrarlo así: (a) una puert
 ## 7. Pendiente (sin definir — no rellenar con supuestos)
 
 - Precio exacto de setup y mensual por línea/paquete, calibrado a Perú/LatAm (no a precios europeos).
-- Números exactos de topes de conversación, actualizaciones/mes incluidas, etc. (alcance fino de cada nivel).
-- Alcance exacto de "agente que vende por ti": límites de conversaciones, canales, entrenamiento con catálogo del cliente.
+- Alcance exacto de "agente que vende por ti": canales y entrenamiento con catálogo del cliente ya definidos en la sección 5.1; falta cerrar el detalle operativo de cómo se sincroniza el catálogo dinámico del nivel Avanzado.
 - Nombres comerciales de los paquetes (ej: Basic/Pro/Scale).
 - Política de dominio (revender con margen vs costo directo).
-- Duración exacta de la permanencia mínima en el retainer de Sistemas a medida (ej. 3 vs 6 meses).
-- Monto/porcentaje del descuento en la cotización de Sistemas a medida para clientes bundle.
+- **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito — se definirá más adelante, no ahora.
 
 ## 8. Siguiente paso
 
-1. Cerrar el alcance fino de cada paquete (números de topes/cantidades marcados como "sin definir" en la sección 5).
-2. Cerrar precios exactos por línea/paquete, calibrados a Perú/LatAm.
-3. Definir política de dominio y los 2 números menores que quedaron abiertos en la sección 7 (permanencia mínima y descuento bundle→proyecto).
+1. Cerrar precios exactos por línea/paquete, calibrados a Perú/LatAm (con el alcance de la sección 5 ya cerrado).
+2. Definir nombres comerciales de los paquetes y política de dominio.
+3. Definir el % de descuento bundle→Sistemas a medida cuando se retome ese punto.
