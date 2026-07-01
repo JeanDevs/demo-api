@@ -148,6 +148,8 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
 - **Nombre comercial definitivo de la agencia**: "Agents Future AI" era solo un placeholder de ejemplo, se va a cambiar (no rellenar con supuestos hasta que el usuario defina el nuevo nombre).
 - Política de dominio (revender con margen vs costo directo).
 - **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito — se definirá más adelante, no ahora.
+- **% de descuento del bundle Agente+Web** (cuánto más barata es la "Suite" vs. contratar Agente y Web sueltos al mismo tier) — no confundir con el punto anterior (ese es el descuento en Sistemas a medida); este número tampoco está definido todavía.
+- **Re-correr el stress-test de posicionamiento (sección 6) con el plugin de marketing real** (`product-management:product-brainstorming` / `marketing:campaign-plan`) cuando el usuario los instale desde su CLI local, y comparar contra el resultado manual.
 
 ## 9. Siguiente paso
 
