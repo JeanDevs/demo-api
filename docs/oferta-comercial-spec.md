@@ -1,7 +1,7 @@
 # Spec: Oferta Comercial — Agents Future AI
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-01 (alcance de paquetes cerrado)
+> Última actualización: 2026-07-01 (precios de Agentes cerrados)
 
 ## 1. Contexto
 
@@ -104,16 +104,38 @@ Para que funcione como headline necesita, antes de nombrarlo así: (a) una puert
 4. **Mensaje "sin cobro por uso"**: se eleva de decisión de pricing a principio de messaging explícito. Debe aparecer en el primer contacto de venta, en la página de precios y en el contrato — no solo vivir en la letra chica.
    - Tagline de trabajo: *"Un precio fijo cada mes. Sin sorpresas en tu factura, sin importar cuánto vendas."*
 
-## 7. Pendiente (sin definir — no rellenar con supuestos)
+## 7. Precios por línea
 
-- Precio exacto de setup y mensual por línea/paquete, calibrado a Perú/LatAm (no a precios europeos).
+Moneda: **soles (PEN)**. Tipo de cambio de referencia usado para calibrar contra los rangos LatAm en USD: ~S/ 3.75 por USD (solo referencia interna, el cliente ve precio en soles).
+
+### 7.1 Agentes (cerrado 2026-07-01)
+
+| Paquete | Setup (pago único) | Mensual |
+|---|---|---|
+| Básico | S/ 300 | S/ 89/mes |
+| Intermedio | S/ 600 | S/ 399/mes |
+| Avanzado | S/ 1,200 | S/ 1,899/mes |
+
+Calibrado a la punta baja del rango LatAm validado (USD 20-50 / 100-300 / 500-1,000 mensual, sección 4), por poder adquisitivo de Perú. El setup escala según complejidad de integración de cada nivel (catálogo básico → integración a lista de productos → sync con inventario/CMS, columna "Entrenamiento" de la sección 5.1).
+
+### 7.2 Web / Landing (WaaS) — pendiente
+
+Precio sin definir. El criterio de cálculo (cómo traducir la lógica WaaS de "mensual recupera el pago único en X meses" a Perú) queda **pospuesto a propósito**: el usuario decidió no fijarlo ahora y lo retomará más adelante con su propio criterio.
+
+### 7.3 Sistemas a medida
+
+Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consistente con que el mercado trata esta línea como la menos "empaquetable".
+
+## 8. Pendiente (sin definir — no rellenar con supuestos)
+
+- Precio de setup y mensual de la línea Web (WaaS), incluyendo el criterio de cálculo (sección 7.2).
 - Alcance exacto de "agente que vende por ti": canales y entrenamiento con catálogo del cliente ya definidos en la sección 5.1; falta cerrar el detalle operativo de cómo se sincroniza el catálogo dinámico del nivel Avanzado.
 - Nombres comerciales de los paquetes (ej: Basic/Pro/Scale).
 - Política de dominio (revender con margen vs costo directo).
 - **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito — se definirá más adelante, no ahora.
 
-## 8. Siguiente paso
+## 9. Siguiente paso
 
-1. Cerrar precios exactos por línea/paquete, calibrados a Perú/LatAm (con el alcance de la sección 5 ya cerrado).
+1. Definir el criterio de cálculo y cerrar precios de la línea Web (WaaS) cuando el usuario lo retome.
 2. Definir nombres comerciales de los paquetes y política de dominio.
 3. Definir el % de descuento bundle→Sistemas a medida cuando se retome ese punto.
