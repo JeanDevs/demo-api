@@ -1,11 +1,11 @@
 # Spec: Oferta Comercial — Agents Future AI
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-01 (precios de Agentes cerrados)
+> Última actualización: 2026-07-01 (nombres comerciales de tiers cerrados)
 
 ## 1. Contexto
 
-Agencia: **Agents Future AI**.
+Agencia: **Agents Future AI** *(placeholder — el nombre comercial definitivo aún no está decidido, ver sección 8)*.
 Cliente objetivo: pymes con negocio online (tiendas online y similares), principalmente LatAm (calibrado a Perú).
 
 ## 2. Líneas de producto
@@ -35,7 +35,7 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 
 ### 5.1 Agentes (WhatsApp / chat web)
 
-| Dimensión | Básico | Intermedio | Avanzado |
+| Dimensión | Arranque / Starter | Crecimiento / Growth | Escala / Scale |
 |---|---|---|---|
 | Canales | 1 (WhatsApp *o* web chat) | 2 (WhatsApp + web chat) | Multicanal (+ Instagram/Messenger) |
 | Función | Responde FAQs + deriva a humano | Responde + toma pedidos/agenda | Responde + vende + upsell + seguimiento post-venta |
@@ -44,7 +44,8 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 | Handoff a humano | Manual | Con alertas | Con reglas de escalamiento |
 | Analytics | Básico (nº conversaciones) | Reporte mensual | Dashboard + insights de ventas |
 
-> El tope de conversaciones es una señal para subir de plan, no una factura extra: si un cliente Básico/Intermedio supera el tope, se le invita a upgrade — nunca se le cobra por conversación, para mantener intacto el mensaje "sin cobro por uso" (sección 6.1, decisión 4).
+> El tope de conversaciones es una señal para subir de plan, no una factura extra: si un cliente Arranque/Crecimiento supera el tope, se le invita a upgrade — nunca se le cobra por conversación, para mantener intacto el mensaje "sin cobro por uso" (sección 6.1, decisión 4).
+> Nombres de tier (Arranque/Crecimiento/Escala, ES/EN) definidos en sección 5.5. Tabla usa el nombre interno en la columna "Dimensión" y el nombre comercial en el encabezado.
 
 ### 5.2 Web / Landing (WaaS)
 
@@ -63,6 +64,20 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 - **Sistemas a medida no forma parte de la mensualidad del bundle** (decisión cerrada en 6.1): se cotiza como proyecto aparte, con descuento en esa cotización para clientes que ya tienen el bundle.
 - Cualquier línea (incluido Agente o Web solos) puede contratarse suelta a precio individual — el bundle no es obligatorio para acceder a la agencia, es el incentivo de mejor precio.
 - Debe ser la oferta "hero" del messaging (no una línea más).
+
+### 5.5 Nombres comerciales de los tiers (cerrado 2026-07-01)
+
+Esquema de nombres para los 3 tiers, en español (principal) e inglés (para la landing bilingüe):
+
+| Tier interno | Nombre ES | Nombre EN |
+|---|---|---|
+| Básico | Arranque | Starter |
+| Intermedio | Crecimiento | Growth |
+| Avanzado | Escala | Scale |
+
+- Reemplaza "Básico/Intermedio/Avanzado" como etiqueta cara al cliente en Agentes (tabla 5.1) y, cuando aplique, en Web (tabla 5.2).
+- El **Bundle** no es un cuarto tier: se nombra como "Suite [Tier]" (ej. "Suite Crecimiento" = tier Crecimiento/Growth de Agente + Web juntos bajo una suscripción).
+- Idioma a mostrar depende del idioma de la página (landing bilingüe ES/EN), ambos nombres son oficiales, ninguno es traducción improvisada.
 
 ## 6. Stress-test de posicionamiento (manual — sin plugin de marketing, ver nota abajo)
 
@@ -112,9 +127,9 @@ Moneda: **soles (PEN)**. Tipo de cambio de referencia usado para calibrar contra
 
 | Paquete | Setup (pago único) | Mensual |
 |---|---|---|
-| Básico | S/ 300 | S/ 89/mes |
-| Intermedio | S/ 600 | S/ 399/mes |
-| Avanzado | S/ 1,200 | S/ 1,899/mes |
+| Arranque / Starter | S/ 300 | S/ 89/mes |
+| Crecimiento / Growth | S/ 600 | S/ 399/mes |
+| Escala / Scale | S/ 1,200 | S/ 1,899/mes |
 
 Calibrado a la punta baja del rango LatAm validado (USD 20-50 / 100-300 / 500-1,000 mensual, sección 4), por poder adquisitivo de Perú. El setup escala según complejidad de integración de cada nivel (catálogo básico → integración a lista de productos → sync con inventario/CMS, columna "Entrenamiento" de la sección 5.1).
 
@@ -130,12 +145,12 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
 
 - Precio de setup y mensual de la línea Web (WaaS), incluyendo el criterio de cálculo (sección 7.2).
 - Alcance exacto de "agente que vende por ti": canales y entrenamiento con catálogo del cliente ya definidos en la sección 5.1; falta cerrar el detalle operativo de cómo se sincroniza el catálogo dinámico del nivel Avanzado.
-- Nombres comerciales de los paquetes (ej: Basic/Pro/Scale).
+- **Nombre comercial definitivo de la agencia**: "Agents Future AI" era solo un placeholder de ejemplo, se va a cambiar (no rellenar con supuestos hasta que el usuario defina el nuevo nombre).
 - Política de dominio (revender con margen vs costo directo).
 - **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito — se definirá más adelante, no ahora.
 
 ## 9. Siguiente paso
 
 1. Definir el criterio de cálculo y cerrar precios de la línea Web (WaaS) cuando el usuario lo retome.
-2. Definir nombres comerciales de los paquetes y política de dominio.
+2. Definir el nombre comercial definitivo de la agencia y la política de dominio.
 3. Definir el % de descuento bundle→Sistemas a medida cuando se retome ese punto.
