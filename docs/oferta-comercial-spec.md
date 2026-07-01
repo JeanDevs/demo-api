@@ -156,6 +156,21 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
 Puntos ciegos encontrados al revisar el spec completo — no son decisiones de producto/pricing como la sección 8, son huecos de ejecución/negocio que pueden invalidar los números ya cerrados si no se resuelven.
 
 1. **[Alto] No hay economía unitaria detrás de los precios cerrados.** Nunca se calculó cuánto cuesta entregar cada tier (API de WhatsApp, hosting, tiempo de soporte/integración de catálogo) contra lo que cobra (sección 7.1). Sin permanencia en Agente/Web, un cliente puede cancelar el mes 1 tras el setup — si S/300 de setup no cubre esa mano de obra, cada cliente que se va rápido es pérdida, no solo cliente perdido.
+
+   **Stack recomendado (borrador, no cerrado):**
+   - Modelo de lenguaje para el volumen del día a día: **no usar un modelo Claude/Anthropic como motor de cada mensaje** — el más barato de la familia (Claude Haiku 4.5) lista a USD 1/millón tokens de entrada y USD 5/millón de salida, varias veces más caro por token que alternativas orientadas a volumen (ej. GPT-4o-mini, Gemini Flash, o modelos open-weight vía Groq/Together/Fireworks/DeepInfra). Reservar un modelo premium (de cualquier proveedor) solo para un paso puntual de razonamiento complejo en el tier Escala, no para cada mensaje.
+   - RAG (embeddings + vector DB, ej. pgvector/Qdrant) para el catálogo en vez de meter el catálogo completo en cada prompt — evita que el costo escale con el tamaño del catálogo del cliente.
+   - Canal WhatsApp vía Meta Cloud API directo (evita markup de un BSP intermediario) si la agencia puede manejar la integración.
+   - Límites técnicos duros por cliente (mensajes/hora, turnos máx. antes de escalar a humano) como red de seguridad de margen, independientes del mensaje comercial de "uso justo" que ve el cliente.
+
+   **Casos donde el consumo sube y se pierde margen (de más a menos probable):**
+   - Cuota de Meta por conversación de WhatsApp escalando en el tier Escala (sin tope duro) — es un costo pass-through fuera del control de la agencia, más relevante que el costo del modelo de lenguaje en sí.
+   - Cliente Arranque/Crecimiento con pico de tráfico (viral, campaña de ads) sin throttling técnico real: sigue recibiendo servicio completo al precio del tier bajo mientras el costo real corre muy por encima de lo presupuestado para ese ciclo.
+   - Abuso/prompt injection/loops de reintentos que generan conversaciones de alto volumen y cero valor.
+   - Sync de catálogo dinámico (Escala) escalando con el tamaño/frecuencia de actualización del catálogo, no con el número de conversaciones — dos clientes Escala con catálogos muy distintos pagan lo mismo pero cuestan distinto.
+
+   **Caso óptimo:** catálogo chico y estable, tier Arranque con ~100-150 conversaciones reales/mes (bien debajo del tope de 300), conversaciones cortas resueltas sin escalar a humano — costo técnico de unos pocos soles al mes contra S/89 de ingreso.
+
 2. **[Alto] Falta canal de adquisición.** El spec define producto, tiers y precios, pero nada sobre cómo se consiguen los primeros clientes (referidos, comunidades, ads, cold outreach). Sin esto el pricing es teórico — no hay evidencia de campo, solo investigación de escritorio (sección 4).
 3. **[Medio] No hay medio de cobro definido.** Precios en soles (sección 7) asumen una forma de cobro recurrente (Yape/Plin, transferencia, tarjeta vía Culqi/Niubiz, etc.) que nunca se especificó. La recurrencia sin permanencia necesita cobro automático o hay que perseguir el pago cada mes manualmente.
 4. **[Medio] Falta definir quién entrega el soporte prometido y con qué capacidad.** Compromisos como "2h soporte técnico/mes" (5.2), "reglas de escalamiento" y "dashboard de insights" (5.1, tier Escala) no tienen dueño operativo definido ni límite de cuántos clientes de tier alto se pueden atender antes de que el servicio se degrade.
