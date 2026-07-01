@@ -1,7 +1,7 @@
 # Spec: Oferta Comercial — Agents Future AI
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-01 (nombres comerciales de tiers cerrados)
+> Última actualización: 2026-07-01 (gaps operativos/de negocio agregados como pendientes)
 
 ## 1. Contexto
 
@@ -151,8 +151,18 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
 - **% de descuento del bundle Agente+Web** (cuánto más barata es la "Suite" vs. contratar Agente y Web sueltos al mismo tier) — no confundir con el punto anterior (ese es el descuento en Sistemas a medida); este número tampoco está definido todavía.
 - **Re-correr el stress-test de posicionamiento (sección 6) con el plugin de marketing real** (`product-management:product-brainstorming` / `marketing:campaign-plan`) cuando el usuario los instale desde su CLI local, y comparar contra el resultado manual.
 
-## 9. Siguiente paso
+## 9. Gaps operativos/de negocio detectados (auto-revisión 2026-07-01, sin cubrir aún)
+
+Puntos ciegos encontrados al revisar el spec completo — no son decisiones de producto/pricing como la sección 8, son huecos de ejecución/negocio que pueden invalidar los números ya cerrados si no se resuelven.
+
+1. **[Alto] No hay economía unitaria detrás de los precios cerrados.** Nunca se calculó cuánto cuesta entregar cada tier (API de WhatsApp, hosting, tiempo de soporte/integración de catálogo) contra lo que cobra (sección 7.1). Sin permanencia en Agente/Web, un cliente puede cancelar el mes 1 tras el setup — si S/300 de setup no cubre esa mano de obra, cada cliente que se va rápido es pérdida, no solo cliente perdido.
+2. **[Alto] Falta canal de adquisición.** El spec define producto, tiers y precios, pero nada sobre cómo se consiguen los primeros clientes (referidos, comunidades, ads, cold outreach). Sin esto el pricing es teórico — no hay evidencia de campo, solo investigación de escritorio (sección 4).
+3. **[Medio] No hay medio de cobro definido.** Precios en soles (sección 7) asumen una forma de cobro recurrente (Yape/Plin, transferencia, tarjeta vía Culqi/Niubiz, etc.) que nunca se especificó. La recurrencia sin permanencia necesita cobro automático o hay que perseguir el pago cada mes manualmente.
+4. **[Medio] Falta definir quién entrega el soporte prometido y con qué capacidad.** Compromisos como "2h soporte técnico/mes" (5.2), "reglas de escalamiento" y "dashboard de insights" (5.1, tier Escala) no tienen dueño operativo definido ni límite de cuántos clientes de tier alto se pueden atender antes de que el servicio se degrade.
+
+## 10. Siguiente paso
 
 1. Definir el criterio de cálculo y cerrar precios de la línea Web (WaaS) cuando el usuario lo retome.
 2. Definir el nombre comercial definitivo de la agencia y la política de dominio.
 3. Definir el % de descuento bundle→Sistemas a medida cuando se retome ese punto.
+4. Resolver los gaps operativos de la sección 9 (economía unitaria, canal de adquisición, medio de cobro, capacidad de soporte) — priorizados como bloqueantes reales antes de vender en firme.
