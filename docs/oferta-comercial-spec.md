@@ -1,12 +1,12 @@
-# Spec: Oferta Comercial — Agents Future AI
+# Spec: Oferta Comercial — Arka Intelligence
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-01 (gaps operativos/de negocio agregados como pendientes)
+> Última actualización: 2026-07-01 (nombre comercial y estrategia de marca cerrados)
 
 ## 1. Contexto
 
-Agencia: **Agents Future AI** *(placeholder — el nombre comercial definitivo aún no está decidido, ver sección 8)*.
-Cliente objetivo: pymes con negocio online (tiendas online y similares), principalmente LatAm (calibrado a Perú).
+Agencia: **Arka Intelligence** *(nombre comercial definitivo, cerrado 2026-07-01 — ver sección 11; pendiente verificar disponibilidad de dominio y marca registrada en Perú, ver sección 8)*.
+Cliente objetivo: pymes con negocio online (tiendas online y similares), principalmente LatAm (calibrado a Perú). Nicho de lanzamiento (MVP): **e-commerce / tiendas online** (sección 11).
 
 ## 2. Líneas de producto
 
@@ -96,7 +96,7 @@ Esquema de nombres para los 3 tiers, en español (principal) e inglés (para la 
 2. **[Alto] El mensaje "sin cobro por uso" no está en ningún lado como titular de venta hoy** — es una decisión de pricing interna, no un mensaje. Es el argumento más fuerte contra la competencia y debería ser lo primero que escucha un prospecto, no un detalle de la letra chica del contrato.
 3. **[Medio] El modelo WaaS es contraintuitivo para una pyme LatAm** acostumbrada a "pago único y ya es mío". Objeción esperada: *"¿por qué pago para siempre por algo que antes compraba una sola vez?"* Si el mensaje no explica el porqué (hosting + mantenimiento + actualizaciones continuas), puede tumbar la conversión de la línea 2 completa.
 4. **[Medio] Política de cancelación sin definir es un hueco de confianza, no solo administrativo.** Es de las primeras preguntas que hará un dueño de pyme desconfiado ("si dejo de pagar, ¿pierdo mi web/agente/número?"). Sin respuesta clara no se puede cerrar venta con confianza aunque el precio esté perfecto. Esto sube de prioridad respecto a como estaba listado antes.
-5. **[Bajo-Medio] El nombre "Agents Future AI"** enmarca la agencia como especialista en agentes IA, coherente con línea 1 pero puede debilitar credibilidad en líneas 2 y 3 frente a un prospecto que busca "una agencia de webs" y descarta por nombre. No bloqueante, pero a tener en cuenta en el messaging (ej. "más que agentes: tu equipo de tecnología").
+5. **[Bajo-Medio] El nombre "Agents Future AI"** enmarca la agencia como especialista en agentes IA, coherente con línea 1 pero puede debilitar credibilidad en líneas 2 y 3 frente a un prospecto que busca "una agencia de webs" y descarta por nombre. No bloqueante, pero a tener en cuenta en el messaging (ej. "más que agentes: tu equipo de tecnología"). **Resuelto 2026-07-01**: nombre cambiado a "Arka Intelligence" (sección 11), neutro entre las 3 líneas.
 6. **[Bajo] Sin casos de éxito todavía (asumido).** Si es así, el mensaje debería apoyarse en garantías/reversibilidad (cancela cuando quieras, soporte reforzado el primer mes) más que en prueba social al inicio.
 
 ### Objeciones esperadas de un dueño de pyme (y si la oferta ya las responde)
@@ -145,8 +145,7 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
 
 - Precio de setup y mensual de la línea Web (WaaS), incluyendo el criterio de cálculo (sección 7.2).
 - Alcance exacto de "agente que vende por ti": canales y entrenamiento con catálogo del cliente ya definidos en la sección 5.1; falta cerrar el detalle operativo de cómo se sincroniza el catálogo dinámico del nivel Avanzado.
-- **Nombre comercial definitivo de la agencia**: "Agents Future AI" era solo un placeholder de ejemplo, se va a cambiar (no rellenar con supuestos hasta que el usuario defina el nuevo nombre).
-- Política de dominio (revender con margen vs costo directo).
+- Política de dominio (revender con margen vs costo directo) — pendiente verificar primero disponibilidad de dominio/marca para "Arka Intelligence" (sección 11, punto 2).
 - **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito — se definirá más adelante, no ahora.
 - **% de descuento del bundle Agente+Web** (cuánto más barata es la "Suite" vs. contratar Agente y Web sueltos al mismo tier) — no confundir con el punto anterior (ese es el descuento en Sistemas a medida); este número tampoco está definido todavía.
 - **Re-correr el stress-test de posicionamiento (sección 6) con el plugin de marketing real** (`product-management:product-brainstorming` / `marketing:campaign-plan`) cuando el usuario los instale desde su CLI local, y comparar contra el resultado manual.
@@ -171,13 +170,23 @@ Puntos ciegos encontrados al revisar el spec completo — no son decisiones de p
 
    **Caso óptimo:** catálogo chico y estable, tier Arranque con ~100-150 conversaciones reales/mes (bien debajo del tope de 300), conversaciones cortas resueltas sin escalar a humano — costo técnico de unos pocos soles al mes contra S/89 de ingreso.
 
-2. **[Alto] Falta canal de adquisición.** El spec define producto, tiers y precios, pero nada sobre cómo se consiguen los primeros clientes (referidos, comunidades, ads, cold outreach). Sin esto el pricing es teórico — no hay evidencia de campo, solo investigación de escritorio (sección 4).
+2. **[Medio, bajó de Alto] Canal de adquisición decidido, ejecución táctica pendiente.** Se decidió ads pagados como canal principal (sección 11, punto 4), pero falta el detalle operativo: presupuesto, segmentación, copy y diseño de la demo interactiva. Sin esto el pricing sigue siendo teórico — no hay evidencia de campo, solo investigación de escritorio (sección 4).
 3. **[Medio] No hay medio de cobro definido.** Precios en soles (sección 7) asumen una forma de cobro recurrente (Yape/Plin, transferencia, tarjeta vía Culqi/Niubiz, etc.) que nunca se especificó. La recurrencia sin permanencia necesita cobro automático o hay que perseguir el pago cada mes manualmente.
 4. **[Medio] Falta definir quién entrega el soporte prometido y con qué capacidad.** Compromisos como "2h soporte técnico/mes" (5.2), "reglas de escalamiento" y "dashboard de insights" (5.1, tier Escala) no tienen dueño operativo definido ni límite de cuántos clientes de tier alto se pueden atender antes de que el servicio se degrade.
 
-## 10. Siguiente paso
+## 11. Estrategia de marca y go-to-market (cerrado 2026-07-01)
+
+Decisiones tomadas en una segunda ronda de stress-test manual, esta vez desde el rol de marketing/marca (sin plugin, ver nota de sección 6).
+
+1. **Nicho de lanzamiento (MVP)**: e-commerce / tiendas online primero. El mensaje y los casos de uso iniciales se aterrizan a este segmento; "Sistemas a medida" (gestión de mesas, cartas digitales — sección 2) sigue existiendo como línea pero no es el foco de lanzamiento.
+2. **Nombre comercial definitivo**: **Arka Intelligence** (reemplaza el placeholder "Agents Future AI" en todo el documento, ver sección 1). Elegido dentro de una dirección "abstracta/agencia seria" — no atado a "agente" ni a "tienda" específicamente, para no debilitar credibilidad en las líneas de Web y Sistemas a medida (riesgo de la sección 6, punto 5, ahora resuelto).
+3. **Estrategia de credibilidad inicial** (sin casos de éxito todavía): combinación de (a) demo interactiva del agente en la landing — el prospecto puede chatear con el agente real antes de comprar, autodemostrable sin necesitar testimonios; (b) reversión de riesgo explícita en el mensaje de venta ("cancela cuando quieras, sin letra chica", ya decidido en 6.1); (c) oferta de "cliente fundador" limitada a los primeros N clientes (precio congelado o setup gratis) a cambio de ser caso de referencia para futuros testimonios.
+4. **Canal principal de adquisición**: ads pagados. Implica que el mensaje debe convertir con tráfico frío, sin depender de relación previa ni referido — de ahí la necesidad de que la demo interactiva y la reversión de riesgo sean explícitas y visibles de inmediato en la landing, no enterradas en el contrato.
+
+## 12. Siguiente paso
 
 1. Definir el criterio de cálculo y cerrar precios de la línea Web (WaaS) cuando el usuario lo retome.
-2. Definir el nombre comercial definitivo de la agencia y la política de dominio.
+2. Verificar disponibilidad de dominio y marca registrada para "Arka Intelligence" en Perú antes de comprometerse operativamente; luego definir política de dominio (revender con margen vs costo directo).
 3. Definir el % de descuento bundle→Sistemas a medida cuando se retome ese punto.
 4. Resolver los gaps operativos de la sección 9 (economía unitaria, canal de adquisición, medio de cobro, capacidad de soporte) — priorizados como bloqueantes reales antes de vender en firme.
+5. Aterrizar la ejecución táctica de ads pagados (sección 11, punto 4): presupuesto, segmentación, copy y diseño de la demo interactiva en la landing.
