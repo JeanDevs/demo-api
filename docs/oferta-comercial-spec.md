@@ -1,7 +1,7 @@
 # Spec: Oferta Comercial — Arka Intelligence
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-01 (nombre comercial y estrategia de marca cerrados)
+> Última actualización: 2026-07-21 (descuento bundle, lanzamiento vía Vercel y prioridades de ejecución cerrados)
 
 ## 1. Contexto
 
@@ -64,6 +64,7 @@ Cliente objetivo: pymes con negocio online (tiendas online y similares), princip
 - **Sistemas a medida no forma parte de la mensualidad del bundle** (decisión cerrada en 6.1): se cotiza como proyecto aparte, con descuento en esa cotización para clientes que ya tienen el bundle.
 - Cualquier línea (incluido Agente o Web solos) puede contratarse suelta a precio individual — el bundle no es obligatorio para acceder a la agencia, es el incentivo de mejor precio.
 - Debe ser la oferta "hero" del messaging (no una línea más).
+- **Descuento del bundle vs. líneas sueltas (cerrado 2026-07-21)**: sin descuento vigente por ahora; en la demo de la landing se mostrará **10%** como cifra de referencia. Revisar cuando exista precio de Web (sección 7.2).
 
 ### 5.5 Nombres comerciales de los tiers (cerrado 2026-07-01)
 
@@ -144,11 +145,17 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
 ## 8. Pendiente (sin definir — no rellenar con supuestos)
 
 - Precio de setup y mensual de la línea Web (WaaS), incluyendo el criterio de cálculo (sección 7.2).
-- Alcance exacto de "agente que vende por ti": canales y entrenamiento con catálogo del cliente ya definidos en la sección 5.1; falta cerrar el detalle operativo de cómo se sincroniza el catálogo dinámico del nivel Avanzado.
-- Política de dominio (revender con margen vs costo directo) — pendiente verificar primero disponibilidad de dominio/marca para "Arka Intelligence" (sección 11, punto 2).
-- **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito — se definirá más adelante, no ahora.
-- **% de descuento del bundle Agente+Web** (cuánto más barata es la "Suite" vs. contratar Agente y Web sueltos al mismo tier) — no confundir con el punto anterior (ese es el descuento en Sistemas a medida); este número tampoco está definido todavía.
-- **Re-correr el stress-test de posicionamiento (sección 6) con el plugin de marketing real** (`product-management:product-brainstorming` / `marketing:campaign-plan`) cuando el usuario los instale desde su CLI local, y comparar contra el resultado manual.
+- Alcance exacto de "agente que vende por ti": canales y entrenamiento con catálogo del cliente ya definidos en la sección 5.1. El **sync de catálogo dinámico del tier Escala** significa que el agente responde siempre con datos actuales (precio, stock, productos nuevos) sin que nadie recargue el catálogo a mano. Mecanismos posibles, de menor a mayor costo operativo:
+  1. **Webhook/API de la plataforma** (Shopify, WooCommerce, VTEX): la tienda avisa automáticamente cuando cambia un producto y solo se re-indexa ese producto. El costo escala con las actualizaciones, no con el tamaño del catálogo — es la opción ideal.
+  2. **Polling programado**: cada X horas se lee el feed completo del catálogo y se re-embeben solo los productos que cambiaron. Sirve cuando la plataforma no ofrece webhooks; el costo crece con el tamaño del catálogo y la frecuencia elegida.
+  3. **Carga manual asistida** (el cliente sube CSV/Excel actualizado): sin costo técnico recurrente, pero rompe la promesa de "dinámico" — solo aceptable como fallback.
+
+  Pendiente por decidir: qué plataformas se soportan con webhook en el lanzamiento y cuál es la frecuencia máxima de polling incluida en el precio de Escala.
+- **Lanzamiento web vía Vercel (decidido 2026-07-21)**: la landing se desplegará en Vercel y el dominio se puede comprar/gestionar desde la misma plataforma. Sigue pendiente: verificar disponibilidad del dominio exacto y de la marca registrada en Perú (Indecopi), y la política de dominio para clientes (revender con margen vs costo directo).
+- **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito (reconfirmado 2026-07-21) — se definirá más adelante, no ahora.
+- **Medio de cobro recurrente** (Yape/Plin, transferencia, Culqi/Niubiz): sigue sin definir (reconfirmado 2026-07-21, ver sección 9, punto 3).
+- **Capacidad de soporte** (quién entrega, tope de clientes): sigue sin definir (reconfirmado 2026-07-21, ver sección 9, punto 4).
+- **Re-correr el stress-test de posicionamiento (sección 6) con el plugin de marketing real** (`product-management:product-brainstorming` / `marketing:campaign-plan`): sin fecha definida (reconfirmado 2026-07-21) — cuando el usuario los instale desde su CLI local, comparar contra el resultado manual.
 
 ## 9. Gaps operativos/de negocio detectados (auto-revisión 2026-07-01, sin cubrir aún)
 
@@ -170,6 +177,13 @@ Puntos ciegos encontrados al revisar el spec completo — no son decisiones de p
 
    **Caso óptimo:** catálogo chico y estable, tier Arranque con ~100-150 conversaciones reales/mes (bien debajo del tope de 300), conversaciones cortas resueltas sin escalar a humano — costo técnico de unos pocos soles al mes contra S/89 de ingreso.
 
+   **Cómo validar la economía unitaria en la práctica (plan borrador, 2026-07-21):**
+   1. Montar un piloto interno con el stack recomendado (modelo económico + RAG + Meta Cloud API en modo sandbox) y simular 100-300 conversaciones típicas de e-commerce (consulta de precio, stock, seguimiento de pedido).
+   2. Medir el costo real por conversación: tokens de entrada/salida por turno, número de turnos promedio, cuota de Meta por conversación iniciada (ventana de 24h) y costo de embeddings por actualización de catálogo.
+   3. Proyectar por tier: multiplicar por el tope de cada tier (300 / 1,000 / estimado P90 para Escala) y comparar contra S/89 / S/399 / S/1,899 para obtener el margen bruto por tier.
+   4. Definir un umbral de alerta: si el costo técnico de un cliente supera un % de su mensualidad (propuesto: 30%, no cerrado), se activan los límites técnicos duros del stack.
+   5. Repetir la medición con los primeros 2-3 clientes fundadores reales antes de escalar el gasto en ads — la simulación valida el orden de magnitud, no el comportamiento real.
+
 2. **[Medio, bajó de Alto] Canal de adquisición decidido, ejecución táctica pendiente.** Se decidió ads pagados como canal principal (sección 11, punto 4), pero falta el detalle operativo: presupuesto, segmentación, copy y diseño de la demo interactiva. Sin esto el pricing sigue siendo teórico — no hay evidencia de campo, solo investigación de escritorio (sección 4).
 3. **[Medio] No hay medio de cobro definido.** Precios en soles (sección 7) asumen una forma de cobro recurrente (Yape/Plin, transferencia, tarjeta vía Culqi/Niubiz, etc.) que nunca se especificó. La recurrencia sin permanencia necesita cobro automático o hay que perseguir el pago cada mes manualmente.
 4. **[Medio] Falta definir quién entrega el soporte prometido y con qué capacidad.** Compromisos como "2h soporte técnico/mes" (5.2), "reglas de escalamiento" y "dashboard de insights" (5.1, tier Escala) no tienen dueño operativo definido ni límite de cuántos clientes de tier alto se pueden atender antes de que el servicio se degrade.
@@ -183,10 +197,10 @@ Decisiones tomadas en una segunda ronda de stress-test manual, esta vez desde el
 3. **Estrategia de credibilidad inicial** (sin casos de éxito todavía): combinación de (a) demo interactiva del agente en la landing — el prospecto puede chatear con el agente real antes de comprar, autodemostrable sin necesitar testimonios; (b) reversión de riesgo explícita en el mensaje de venta ("cancela cuando quieras, sin letra chica", ya decidido en 6.1); (c) oferta de "cliente fundador" limitada a los primeros N clientes (precio congelado o setup gratis) a cambio de ser caso de referencia para futuros testimonios.
 4. **Canal principal de adquisición**: ads pagados. Implica que el mensaje debe convertir con tráfico frío, sin depender de relación previa ni referido — de ahí la necesidad de que la demo interactiva y la reversión de riesgo sean explícitas y visibles de inmediato en la landing, no enterradas en el contrato.
 
-## 12. Siguiente paso
+## 12. Siguiente paso (prioridades actualizadas 2026-07-21, orden acordado con el usuario)
 
-1. Definir el criterio de cálculo y cerrar precios de la línea Web (WaaS) cuando el usuario lo retome.
-2. Verificar disponibilidad de dominio y marca registrada para "Arka Intelligence" en Perú antes de comprometerse operativamente; luego definir política de dominio (revender con margen vs costo directo).
-3. Definir el % de descuento bundle→Sistemas a medida cuando se retome ese punto.
-4. Resolver los gaps operativos de la sección 9 (economía unitaria, canal de adquisición, medio de cobro, capacidad de soporte) — priorizados como bloqueantes reales antes de vender en firme.
-5. Aterrizar la ejecución táctica de ads pagados (sección 11, punto 4): presupuesto, segmentación, copy y diseño de la demo interactiva en la landing.
+1. **Definir la ejecución táctica de ads pagados** (siguiente paso inmediato): presupuesto, segmentación y copy (sección 11, punto 4).
+2. **Construir la demo interactiva del agente** (priorizada): pilar de credibilidad de la sección 11, punto 3, y pieza central de la landing.
+3. **Landing MVP desplegada en Vercel** — solo cuando el usuario dé el go, después de cerrar los puntos 1 y 2. Mostrará el bundle con 10% de referencia (sección 5.4) y la línea Web sin precio.
+4. **Validar la economía unitaria** con el piloto descrito en la sección 9, punto 1, antes de escalar el gasto en ads.
+5. En pausa deliberada hasta que el usuario los retome: precio Web (7.2), % descuento bundle→Sistemas a medida, medio de cobro, capacidad de soporte, re-run del stress-test con plugin de marketing (sección 8).
