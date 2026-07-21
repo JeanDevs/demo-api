@@ -1,7 +1,7 @@
 # Spec: Oferta Comercial — Arka Intelligence
 
 > Documento vivo, metodología Spec-Driven Development. Se refina antes de tocar precios/negocio en firme.
-> Última actualización: 2026-07-21 (descuento bundle, lanzamiento vía Vercel y prioridades de ejecución cerrados)
+> Última actualización: 2026-07-21 (plan táctico de ads, sync de catálogo y prioridades de ejecución cerrados)
 
 ## 1. Contexto
 
@@ -150,7 +150,7 @@ Sin tabla fija — se mantiene cotización por proyecto (sección 5.3), consiste
   2. **Polling programado**: cada X horas se lee el feed completo del catálogo y se re-embeben solo los productos que cambiaron. Sirve cuando la plataforma no ofrece webhooks; el costo crece con el tamaño del catálogo y la frecuencia elegida.
   3. **Carga manual asistida** (el cliente sube CSV/Excel actualizado): sin costo técnico recurrente, pero rompe la promesa de "dinámico" — solo aceptable como fallback.
 
-  Pendiente por decidir: qué plataformas se soportan con webhook en el lanzamiento y cuál es la frecuencia máxima de polling incluida en el precio de Escala.
+  **Decidido 2026-07-21**: el paquete ofrece el mecanismo 1 (webhook/API) cuando la plataforma del cliente lo soporte, con el 3 (carga manual asistida) como fallback; el polling (2) se descarta para el lanzamiento. La arquitectura final se define por cliente una vez cerrada la venta — la prioridad ahora es armar el paquete, no la implementación técnica.
 - **Lanzamiento web vía Vercel (decidido 2026-07-21)**: la landing se desplegará en Vercel y el dominio se puede comprar/gestionar desde la misma plataforma. Sigue pendiente: verificar disponibilidad del dominio exacto y de la marca registrada en Perú (Indecopi), y la política de dominio para clientes (revender con margen vs costo directo).
 - **Descuento en la cotización de Sistemas a medida para clientes bundle**: decisión pospuesta a propósito (reconfirmado 2026-07-21) — se definirá más adelante, no ahora.
 - **Medio de cobro recurrente** (Yape/Plin, transferencia, Culqi/Niubiz): sigue sin definir (reconfirmado 2026-07-21, ver sección 9, punto 3).
@@ -197,10 +197,28 @@ Decisiones tomadas en una segunda ronda de stress-test manual, esta vez desde el
 3. **Estrategia de credibilidad inicial** (sin casos de éxito todavía): combinación de (a) demo interactiva del agente en la landing — el prospecto puede chatear con el agente real antes de comprar, autodemostrable sin necesitar testimonios; (b) reversión de riesgo explícita en el mensaje de venta ("cancela cuando quieras, sin letra chica", ya decidido en 6.1); (c) oferta de "cliente fundador" limitada a los primeros N clientes (precio congelado o setup gratis) a cambio de ser caso de referencia para futuros testimonios.
 4. **Canal principal de adquisición**: ads pagados. Implica que el mensaje debe convertir con tráfico frío, sin depender de relación previa ni referido — de ahí la necesidad de que la demo interactiva y la reversión de riesgo sean explícitas y visibles de inmediato en la landing, no enterradas en el contrato.
 
+### 11.1 Ejecución táctica de ads (insumos cerrados 2026-07-21)
+
+**Insumos cerrados por el usuario:**
+- Presupuesto: **S/ 200/mes** (~S/ 6-7/día).
+- Plataforma: **100% Meta (Instagram + Facebook)**. Sin mix de plataformas por ahora: con S/200/mes, dividir el presupuesto entre plataformas fragmenta la señal de aprendizaje del algoritmo y ninguna llega a optimizar. Google Search (intención de compra más alta) se reevalúa recién cuando el presupuesto supere ~S/1,000/mes — sus CPC en este rubro consumirían S/200 en pocos clics sin dejar data útil.
+- Geografía: **solo Perú**.
+
+**Estructura propuesta (borrador operativo):**
+- 1 sola campaña con objetivo de mensajes: **Click-to-WhatsApp** — el anuncio abre directamente una conversación con el propio agente de Arka. El anuncio ES la demo interactiva (punto 3a de esta sección): el prospecto experimenta el producto en el primer clic, sin fricción intermedia. La landing sigue siendo necesaria como respaldo de credibilidad y precios, pero no bloquea el encendido de la campaña.
+- Segmentación inicial: Perú, 24-50 años, intereses de dueños de tienda online (Shopify, WooCommerce, e-commerce, emprendimiento, administradores de página con tienda), dejando que Advantage+ amplíe sobre esas señales.
+- Ubicaciones: feed + reels/stories de Instagram, feed de Facebook.
+- 3 ángulos de copy a rotar (test creativo):
+  1. **Factura sorpresa**: "Un precio fijo cada mes. Sin sorpresas en tu factura, sin importar cuánto vendas." (tagline de 6.1).
+  2. **Ventas nocturnas perdidas**: "Tu tienda no cierra a las 11pm. Tu agente tampoco."
+  3. **Cliente fundador**: precio congelado / setup gratis a los primeros N clientes (punto 3c de esta sección).
+- Métricas objetivo (estimaciones a validar, no promesas): costo por conversación iniciada < S/10; ~20-40 conversaciones/mes; meta comercial de 1-2 clientes fundadores/mes. Un solo cliente Arranque (S/300 setup + S/89/mes) ya recupera el gasto mensual de ads.
+- **Dependencia dura**: el agente propio funcionando (la demo, sección 12 punto 1) es prerequisito técnico del Click-to-WhatsApp — sin agente, la campaña no se enciende.
+
 ## 12. Siguiente paso (prioridades actualizadas 2026-07-21, orden acordado con el usuario)
 
-1. **Definir la ejecución táctica de ads pagados** (siguiente paso inmediato): presupuesto, segmentación y copy (sección 11, punto 4).
-2. **Construir la demo interactiva del agente** (priorizada): pilar de credibilidad de la sección 11, punto 3, y pieza central de la landing.
-3. **Landing MVP desplegada en Vercel** — solo cuando el usuario dé el go, después de cerrar los puntos 1 y 2. Mostrará el bundle con 10% de referencia (sección 5.4) y la línea Web sin precio.
-4. **Validar la economía unitaria** con el piloto descrito en la sección 9, punto 1, antes de escalar el gasto en ads.
+1. **Construir la demo / agente propio** (ahora el paso inmediato): pilar de credibilidad (11.3a), prerequisito técnico del Click-to-WhatsApp (11.1) y a la vez el piloto que genera las mediciones de economía unitaria (sección 9, punto 1).
+2. **Encender la campaña de ads** según el plan de 11.1 (ya definido: S/200/mes, Meta IG+FB, solo Perú) una vez que la demo funcione.
+3. **Landing MVP desplegada en Vercel** — solo cuando el usuario dé el go. Mostrará el bundle con 10% de referencia (sección 5.4) y la línea Web sin precio.
+4. **Validar la economía unitaria** con las mediciones del piloto/demo antes de escalar el gasto en ads.
 5. En pausa deliberada hasta que el usuario los retome: precio Web (7.2), % descuento bundle→Sistemas a medida, medio de cobro, capacidad de soporte, re-run del stress-test con plugin de marketing (sección 8).
